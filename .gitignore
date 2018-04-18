@@ -62,3 +62,4 @@ typings/
 
 #www files
 www/
+.map
