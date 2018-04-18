@@ -1,0 +1,45 @@
+grade-horario {
+
+    .primeira-linha {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    
+    .ultima-linha {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .grade-horario-table {
+        width: 100%;
+        font-size: 10px;
+        // width: 350px;
+        //transform: rotate(270deg);
+    }
+
+    .period {
+        margin-left: 8px;
+        color: #3d3d3d;
+        font-size: 14px;
+        margin-top: 15px;
+        margin-bottom: -10px;
+    }
+
+}
+
+td {
+    width: auto;
+    text-align: center;
+    height: 65px;
+    border: 1px solid #ff7043;
+}
+
+th, tr {
+    width: 30px;
+}
+
+table {
+    border-spacing: 5px 0px;
+    border-collapse: separate;
+    margin-top: 20px;
+}
