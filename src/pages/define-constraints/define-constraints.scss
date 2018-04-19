@@ -1,0 +1,36 @@
+page-define-constraints {
+
+    .next-step-button {
+        border: 1px solid color($colors, main-color);
+        background-color: $background-color;
+        color: color($colors, main-color);
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+    }
+
+}
+
+.passo {
+    margin-top: 20px;
+    height: 80%
+}
+
+.passo-hidden {
+    display: none;
+}
+
+.intervalo {
+    // padding-top: 0px !important;
+}
+
+.button-md:hover:not(.disable-hover) {
+    background-color: $background-color !important;
+}
+
+.activated {
+    background-color: white !important;
+}
+
+

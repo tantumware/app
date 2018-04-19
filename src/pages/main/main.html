@@ -1,0 +1,28 @@
+<ion-content padding class="main-content">
+
+  <p class="next-classes">{{ 'NEXT_CLASSES' | translate }}</p>
+  <subject-list [subjects]="getDisciplinas()"></subject-list>
+
+  <div class="separator"></div>
+
+  <ion-list class="main-list">
+    <ion-item class="main-item" (click)='onHorariosClicked()'>
+      <img src="assets/img/calendar.svg" class="main-icon" />
+      <span class="main-div"></span>
+      <span class="main-label">{{ 'DAILY_SCHEDULES' | translate }}</span>
+    </ion-item>
+    <ion-item class="main-item" (click)='onGerarHorarioClicked()'>
+      <img src="assets/img/calendar_generate.svg" class="main-icon" />
+      <span class="main-div"></span>
+      <span class="main-label">{{ 'SCHEDULE_GENERATION' | translate }}</span>
+    </ion-item>
+    <ion-item class="main-item" (click)='onEstatisticaClicked()'>
+      <img src="assets/img/bars-chart.svg" class="main-icon" />
+      <span class="main-div"></span>
+      <span class="main-label">{{ 'STATISTICS' | translate }}</span>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button (click)='onSairClicked()' class="button-sair">{{ 'SIGN_OUT' | translate }}</button>
+
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-content *ngIf='showView' class="login-page">
+  <ion-list>
+    <img src="assets/img/scholarship.svg" class="logo-tantum" />
+
+    <ion-item>
+      <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
+      <ion-select [(ngModel)]="idioma" (ionChange)="idiomaChanged()">
+        <ion-option value="pt">Português</ion-option>
+        <ion-option value="en">English</ion-option>
+        <ion-option value="es">Español</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <form (submit)="prepareLogin()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+          <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+        </ion-item>
+
+        <ion-item class="manter-conectado">
+          <ion-label>{{ 'KEEP_LOGGED_IN' | translate }}</ion-label>
+          <ion-toggle [(ngModel)]="manterConectado" color="main-color" [ngModelOptions]="{standalone: true}"></ion-toggle>
+        </ion-item>
+
+        <button ion-button color="main-color" class="login-button">{{ 'LOGIN_BUTTON' | translate }}</button>
+
+      </ion-list>
+    </form>    
+    
+    <button ion-button color="main-color" (click)='onSobreClick()' class="sobre-button">{{ 'ABOUT' | translate }}</button>
+  </ion-list>
+</ion-content>
