@@ -78,7 +78,7 @@ export class LoginPage {
   doLogin(acc: Account) {
     this.storage.set(StorageKeys.KEEP_LOGGED_IN, this.manterConectado);
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: this.translateService.instant("PLEASE_WAIT")
     });      
 
     let timeOutid = setTimeout(() => {
@@ -96,7 +96,7 @@ export class LoginPage {
       console.error('ERROR', err);
       this.showView = true;
       let toast = this.toastCtrl.create({
-        message: 'DEU RUIM',
+        message: this.translateService.instant('ERROR_CONNECTING_TO_SERVER'),
         duration: 3000,
         position: 'top'
       });
