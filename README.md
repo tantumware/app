@@ -1,2 +1,0 @@
-# Tantum
-Aplicativo do TCC
