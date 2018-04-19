@@ -56,17 +56,18 @@ export class GradeHorarioComponent {
   }
 
   onDisciplinaClicked(event: any) {
-    let text;
-    if (event.srcElement.id == '') {
-      text = event.srcElement.innerHTML;
-    } else {
-      text = event.srcElement.id;
-    }
+    // let text;
+    // if (event.srcElement.id == '') {
+    //   text = event.srcElement.innerHTML;
+    // } else {
+    //   text = event.srcElement.id;
+    // }
+    console.log(event);
 
     let alert = this.alertCtrl.create({
-      title: text,
+      title: 'text',
       subTitle: '10% of battery remaining',
-      message: text,
+      message: 'text',
       buttons: ['Voltar']
     });
     alert.present();
