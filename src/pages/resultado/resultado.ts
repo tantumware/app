@@ -25,7 +25,7 @@ export class ResultadoPage {
 
   ionViewDidLoad() {
     this.storage.get(StorageKeys.RESULT).then(res => {
-      if (res) {
+      if (res && res.length > 0) {
         this.subjects = res[1].disciplinas;
       }
     });
@@ -39,7 +39,7 @@ export class ResultadoPage {
             if (res.success) {
               this.storage.set(StorageKeys.RESULT, res.result.nextSemesters);
               this.storage.remove(StorageKeys.CONSTRAINT);
-              this.subjects = res.result.nextSemesters[1].disciplinas;
+              this.subjects = res.result.nextSemesters[Object.keys(res.result.nextSemesters)[0]].disciplinas
             }
           }, err => {
             console.error('ERROR', err);
@@ -56,8 +56,8 @@ export class ResultadoPage {
 
   onRedefineConstrainsClicked() {
     this.storage.remove(StorageKeys.RESULT);
-    let last = this.navCtrl.getPrevious().id;
-    if (last == "DefineConstraintsPage") {
+    let last = this.navCtrl.getPrevious();
+    if (last && last.id == "DefineConstraintsPage") {
       this.navCtrl.pop();
     } else {
       this.navCtrl.push('DefineConstraintsPage');
