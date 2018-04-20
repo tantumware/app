@@ -99,4 +99,8 @@
         <variable name="DEEPLINK_SCHEME" value="https" />
         <variable name="DEEPLINK_HOST" value="setic_oauth_example.ufsc.br" />
     </plugin>
+    <universal-links>
+        <host name="setic_oauth_example.ufsc.br" scheme="ufsclogin">
+        </host>
+    </universal-links>
 </widget>
