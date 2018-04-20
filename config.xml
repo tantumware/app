@@ -93,4 +93,10 @@
     <allow-navigation href="http://192.168.0.3:8100" />
     <engine name="windows" spec="5.0.0" />
     <engine name="android" spec="~7.1.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
+    <plugin name="ionic-plugin-deeplinks" spec="^1.0.15">
+        <variable name="URL_SCHEME" value="ufsclogin" />
+        <variable name="DEEPLINK_SCHEME" value="https" />
+        <variable name="DEEPLINK_HOST" value="setic_oauth_example.ufsc.br" />
+    </plugin>
 </widget>

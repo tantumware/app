@@ -5,6 +5,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { StorageKeys } from '../../utils/storage-keys';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 @IonicPage()
 @Component({
@@ -27,7 +29,22 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     private storage: Storage,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    private iab: InAppBrowser,
+    private deeplinks: Deeplinks) {
+
+
+      this.deeplinks.routeWithNavController(this.navCtrl, {
+        '': LoginPage
+      }).subscribe((match) => {
+        // match.$route - the route we matched, which is the matched entry from the arguments to route()
+        // match.$args - the args passed in the link
+        // match.$link - the full link data
+        console.log('Successfully matched route', match);
+      }, (nomatch) => {
+        // nomatch.$link - the full link data
+        console.error('Got a deeplink that didn\'t match', nomatch);
+      });
 
     this.translateService.setDefaultLang('pt');
 
@@ -72,7 +89,30 @@ export class LoginPage {
     let password = this.password == null ? "" : this.password;
 
     let acc = new Account(userName, password);
-    this.doLogin(acc);
+    const browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code');
+    
+    browser.on("loadstart").subscribe(event => {
+      if ((event.url).indexOf("ufsclogin://setic_oauth_example.ufsc.br") === 0) {
+        browser.on("exit").subscribe(event => {});
+        browser.close();
+        var responseParameters = ((event.url).split("#")[1]).split("&");
+        var parsedResponse = {};
+        for (var i = 0; i < responseParameters.length; i++) {
+          parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+        }
+        // if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
+          //     resolve(parsedResponse);
+          // } else {
+            //     reject("Problem authenticating with Facebook");
+            // }
+          }
+        });
+        browser.on("exit").subscribe(event => {
+          // reject("The Facebook sign in flow was canceled");
+        });
+        
+        browser.close();
+        // this.doLogin(acc);
   }
 
   doLogin(acc: Account) {

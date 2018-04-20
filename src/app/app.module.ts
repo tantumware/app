@@ -10,6 +10,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 import { Items } from '../mocks/providers/items';
 import { LoginProvider } from '../providers/providers';
@@ -59,7 +61,9 @@ export function HttpLoaderFactory(http: Http) {
     EstatisticaProvider,
     ScheduleProvider,
     CalendarUtils,
-    SubjectsProvider
+    SubjectsProvider,
+    InAppBrowser,
+    Deeplinks
   ]
 })
 export class AppModule { }
