@@ -23,6 +23,8 @@ export class LoginPage {
 
   idioma = "pt";
 
+  private browser;
+
   manterConectado: boolean = true;
 
   constructor(public navCtrl: NavController,
@@ -36,22 +38,24 @@ export class LoginPage {
     private browserTab: BrowserTab) {
 
 
-      this.deeplinks.routeWithNavController(this.navCtrl, {
-        '*': LoginPage
-      }).subscribe((match) => {
-        // match.$route - the route we matched, which is the matched entry from the arguments to route()
-        // match.$args - the args passed in the link
-        // match.$link - the full link data
-        console.log('Successfully matched route', match);
-        // alert(match.$route);
-        let code = (match.$link['queryString']);
-        code = code.replace('code=', "");
-        code = code.replace('&state=E3ZYKC1T6H2yP4z', '');
-        this.loginProvider.setic(code);
-      }, (nomatch) => {
-        // nomatch.$link - the full link data
-        console.error('Got a deeplink that didn\'t match', nomatch);
-      });
+    this.deeplinks.routeWithNavController(this.navCtrl, {
+      '*': LoginPage
+    }).subscribe((match) => {
+      this.browser.close();
+      // match.$route - the route we matched, which is the matched entry from the arguments to route()
+      // match.$args - the args passed in the link
+      // match.$link - the full link data
+      let code = (match.$link['queryString']);
+      code = code.replace('code=', "");
+      code = code.replace('&state=E3ZYKC1T6H2yP4z', '');
+      this.loginProvider.authSetic(code)
+        .map(res => res.json())
+        .subscribe(res => {
+          this.doLogin(res['access_token']);
+        });
+    }, (nomatch) => {
+      console.error('Got a deeplink that didn\'t match', nomatch);
+    });
 
     this.translateService.setDefaultLang('pt');
 
@@ -73,16 +77,12 @@ export class LoginPage {
   }
 
   checkKeepLoggedIn() {
-    this.storage.get(StorageKeys.ACCOUNT).then((acc) => {
-      this.storage.get(StorageKeys.KEEP_LOGGED_IN).then(b => {
-        this.manterConectado = b
-        if (acc && b) {
-          this.doLogin(acc);
-        } else {
-          this.showView = true;
-        }
-      });
-      
+    this.storage.get(StorageKeys.TOKEN).then((acc) => {      
+      if (acc) {
+        this.doLogin(acc);
+      } else {
+        this.showView = true;
+      }
     });
   }
 
@@ -91,64 +91,40 @@ export class LoginPage {
     this.storage.set(StorageKeys.LANGUAGE, this.idioma);
   }
 
-  prepareLogin() {    
-    let userName = this.username == null ? "" : this.username;
-    let password = this.password == null ? "" : this.password;
-
-    let acc = new Account(userName, password);
-    // const browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code', '_system', 'location=yes');
-    // browser.show();
-    // browser.on("loadstart").subscribe(event => {
-    //   alert('loadstart');
-    //   if ((event.url).indexOf("ufsclogin://setic_oauth_example.ufsc.br") === 0) {
-    //     browser.on("exit").subscribe(event => {});
-    //     browser.close();
-    //     var responseParameters = ((event.url).split("#")[1]).split("&");
-    //     var parsedResponse = {};
-    //     for (var i = 0; i < responseParameters.length; i++) {
-    //       parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
-    //     }
-    //     // if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
-    //       //     resolve(parsedResponse);
-    //       // } else {
-    //         //     reject("Problem authenticating with Facebook");
-    //         // }
-    //       }
-    //     });
-    //     browser.on("exit").subscribe(event => {
-    //       alert('exit');
-    //       // reject("The Facebook sign in flow was canceled");
-    //     });
-        
-    //     browser.close();
-        // this.doLogin(acc);
-
-        this.browserTab.isAvailable()
-        .then(isAvailable => {
-          if (isAvailable) {
-            this.browserTab.openUrl('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code');
-          } else {
-            // open URL with InAppBrowser instead or SafariViewController
-          }
-        });
-        this.browserTab.close().then(p => console.log(p));
+  prepareLogin() {
+    // this.browserTab.isAvailable()
+    // .then(isAvailable => {
+    //   if (isAvailable) {
+    //     this.browserTab.openUrl('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code');
+    //   } else {
+    //     // open URL with InAppBrowser instead or SafariViewController
+    //   }
+    // });
+    // this.browserTab.close().then(p => console.log(p));
+    this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
+    
+    this.browser.close();
+    // this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
   }
 
-  doLogin(acc: Account) {
+  doLogin(token: string) {
     this.storage.set(StorageKeys.KEEP_LOGGED_IN, this.manterConectado);
     let loading = this.loadingCtrl.create({
       content: this.translateService.instant("PLEASE_WAIT")
-    });      
+    });
+
+    this.storage.set(StorageKeys.TOKEN, token);
 
     let timeOutid = setTimeout(() => {
       loading.present();
     }, 300);
 
-    this.loginProvider.login(acc).subscribe(res => {
-      this.storage.set(StorageKeys.ACCOUNT, acc);
-      loading.dismiss();
-      clearTimeout(timeOutid);
-      this.navCtrl.push('MainPage');
+    this.loginProvider.login(token).subscribe(res => {
+      if (res && res.status == 200 && res.json().success) {
+        loading.dismiss();
+        clearTimeout(timeOutid);
+        this.navCtrl.push('MainPage');
+      }
     }, err => {
       loading.dismiss();
       clearTimeout(timeOutid);

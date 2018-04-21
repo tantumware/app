@@ -9,9 +9,10 @@ import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 @Injectable()
 export class Api {
   // url: string = 'http://localhost:8080/v1';
+  url: string = 'http://192.168.0.3:8080/v1';
   // url: string = 'http://tccrest.pedro.pacheco.vms.ufsc.br:8080/v1';
   // A24cPmgdCw
-  private url: string = 'https://radiant-wave-75942.herokuapp.com/v1';
+  // private url: string = 'https://radiant-wave-75942.herokuapp.com/v1';
 
   constructor(public http: Http) {
   }

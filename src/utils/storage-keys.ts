@@ -8,5 +8,6 @@ export class StorageKeys {
     public static LANGUAGE: string = "language";
     public static STATISTIC: string = "statistic";
     public static ALL_SUBJECTS: string = "all_subjects";
+    public static TOKEN: string = "token";
 
 }
