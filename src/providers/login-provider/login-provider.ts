@@ -38,6 +38,24 @@ export class LoginProvider {
     return seq;
   }
 
+  setic(code: string) {
+    let url = 'https://sistemas.homologacao.ufsc.br/oauth2.0/accessToken?grant_type=authorization_code&code='+code+'&client_id=oauth&redirect_uri=ufsclogin%3A%2F%2Fsetic_oauth_example.ufsc.br&client_secret=segredo';
+    let seq = this.http.post(url, "");
+    let token;
+    seq.map(res => res.json())
+      .subscribe(res => {
+        token = res['access_token'];
+        seq = this.http.get("https://sistemas.homologacao.ufsc.br/oauth2.0/profile?access_token=" + token);
+        seq.map(res => res.json())
+          .subscribe(res => {
+            alert(JSON.stringify(res));            
+        });
+    });
+
+    //
+    return seq;
+  }
+
   /**
    * Log the user out, which forgets the session
    */
