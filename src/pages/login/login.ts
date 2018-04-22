@@ -7,7 +7,6 @@ import { Storage } from '@ionic/storage';
 import { StorageKeys } from '../../utils/storage-keys';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Deeplinks } from '@ionic-native/deeplinks';
-import { BrowserTab } from '@ionic-native/browser-tab';
 
 @IonicPage()
 @Component({
@@ -34,8 +33,7 @@ export class LoginPage {
     private storage: Storage,
     public loadingCtrl: LoadingController,
     private iab: InAppBrowser,
-    private deeplinks: Deeplinks,
-    private browserTab: BrowserTab) {
+    private deeplinks: Deeplinks) {
 
 
     this.deeplinks.routeWithNavController(this.navCtrl, {
@@ -101,10 +99,10 @@ export class LoginPage {
     //   }
     // });
     // this.browserTab.close().then(p => console.log(p));
-    this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
+    // this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
     
-    this.browser.close();
-    // this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
+    // this.browser.close();
+    this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
   }
 
   doLogin(token: string) {

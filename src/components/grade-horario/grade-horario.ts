@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 
 import { Subject } from '../../models/subject';
+import { ModalHelper } from '../../utils/modal-helper';
 
 @Component({
   selector: 'grade-horario',
@@ -10,7 +11,13 @@ import { Subject } from '../../models/subject';
 })
 export class GradeHorarioComponent {
 
-  @Input() subjects: Subject[];
+  @Input() subjects: Subject[]
+
+  private morningTimes: string[] = ["07:30", "08:20", "09:10", "10:10", "11:00"];
+  private afternoonTimes: string[] = ["13:30", "14:20", "15:10", "16:20", "17:10"];
+  private nightTimes: string[] = ["18:30", "19:20", "20:20", "21:10"];
+
+  private weekDays: string[] = ['2', '3', '4', '5', '6'];
 
   private afternoon: string;
   private morning: string;
@@ -34,19 +41,6 @@ export class GradeHorarioComponent {
     this.friday = this.translate.instant('FRIDAY_SHORT');
   }
 
-  getValue(horario: string): string {
-    if (this.subjects && this.subjects.length > 0) {
-      for (let i in this.subjects) {
-        for (let j in this.subjects[i].horarios) {
-          if (this.subjects[i].horarios[j].startsWith(horario)) {
-            return this.subjects[i].codigo;
-          }
-        }
-      }
-    }
-    return "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;"; // white space
-  }
-
   onSlideChanged(event: any): void {
     console.log(event);
   }
@@ -55,22 +49,47 @@ export class GradeHorarioComponent {
     console.log(event);
   }
 
-  onDisciplinaClicked(event: any) {
-    // let text;
-    // if (event.srcElement.id == '') {
-    //   text = event.srcElement.innerHTML;
-    // } else {
-    //   text = event.srcElement.id;
-    // }
-    console.log(event);
+  getInnerHTML(day: string, time: string) {
+    let subject = this.getSubject(day, time);
+    if (subject){
+      return subject.codigo;
+    }
+    return "&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;"; // white space
+  }
 
-    let alert = this.alertCtrl.create({
-      title: 'text',
-      subTitle: '10% of battery remaining',
-      message: 'text',
-      buttons: ['Voltar']
-    });
-    alert.present();
+  getClass(time: string): string {
+    if (this.morningTimes[0] == time || this.afternoonTimes[0] == time || this.nightTimes[0] == time) {
+      return "primeira-linha";
+    } 
+
+    if (this.morningTimes[4] == time || this.afternoonTimes[4] == time || this.nightTimes[3] == time) {
+      return "ultima-linha";
+    }
+
+    return '';
+  }
+
+  onDisciplinaClicked(day: string, time: string) {
+    let subject = this.getSubject(day, time);
+    if (subject) {
+      let mh = new ModalHelper(this.translate, this.alertCtrl);
+      mh.createModal(subject);
+    }
+  }
+
+  getSubject(day: string, time: string): Subject {
+    let horario = day + '.' +  time.replace(":", '');
+
+    if (this.subjects && this.subjects.length > 0) {
+      for (let i in this.subjects) {
+        for (let j in this.subjects[i].horarios) {
+          if (this.subjects[i].horarios[j].startsWith(horario)) {
+            return this.subjects[i];
+          }
+        }
+      }
+    }
+    return;
   }
   
 }
