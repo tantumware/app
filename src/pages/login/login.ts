@@ -2,7 +2,7 @@ import { LoginProvider } from './../../providers/login-provider/login-provider';
 import { Account } from './../../models/account';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { StorageKeys } from '../../utils/storage-keys';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -35,8 +35,8 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     private iab: InAppBrowser,
     private deeplinks: Deeplinks,
-    private browserTab: BrowserTab) {
-
+    private browserTab: BrowserTab,
+    private plataform: Platform) {
 
     this.deeplinks.routeWithNavController(this.navCtrl, {
       '*': LoginPage
@@ -124,23 +124,32 @@ export class LoginPage {
         loading.dismiss();
         clearTimeout(timeOutid);
         this.navCtrl.push('MainPage');
+      } else {
+        loading.dismiss();
+        clearTimeout(timeOutid);
+        this.showError();
       }
     }, err => {
       loading.dismiss();
       clearTimeout(timeOutid);
       console.error('ERROR', err);
-      this.showView = true;
-      let toast = this.toastCtrl.create({
-        message: this.translateService.instant('ERROR_CONNECTING_TO_SERVER'),
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
+      this.showError();
     });
 
   }
 
+  showError() {
+    this.showView = true;
+    let toast = this.toastCtrl.create({
+      message: this.translateService.instant('ERROR_CONNECTING_TO_SERVER'),
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
+
   onSobreClick(): void {
+    this.plataform.exitApp();
     this.navCtrl.push('SobrePage');
   }
 }
