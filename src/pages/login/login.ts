@@ -90,19 +90,10 @@ export class LoginPage {
   }
 
   prepareLogin() {
-    // this.browserTab.isAvailable()
-    // .then(isAvailable => {
-    //   if (isAvailable) {
-    //     this.browserTab.openUrl('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code');
-    //   } else {
-    //     // open URL with InAppBrowser instead or SafariViewController
-    //   }
-    // });
-    // this.browserTab.close().then(p => console.log(p));
-    // this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
+    this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
     
-    // this.browser.close();
-    this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
+    this.browser.close();
+    // this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
   }
 
   doLogin(token: string) {
