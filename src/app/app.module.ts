@@ -12,7 +12,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Deeplinks } from '@ionic-native/deeplinks';
-import { BrowserTab } from '@ionic-native/browser-tab';
 
 import { Items } from '../mocks/providers/items';
 import { LoginProvider } from '../providers/providers';
@@ -64,8 +63,7 @@ export function HttpLoaderFactory(http: Http) {
     CalendarUtils,
     SubjectsProvider,
     InAppBrowser,
-    Deeplinks,
-    BrowserTab
+    Deeplinks
   ]
 })
 export class AppModule { }
