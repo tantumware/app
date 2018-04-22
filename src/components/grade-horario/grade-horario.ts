@@ -13,11 +13,11 @@ export class GradeHorarioComponent {
 
   @Input() subjects: Subject[]
 
-  private morningTimes: string[] = ["07:30", "08:20", "09:10", "10:10", "11:00"];
-  private afternoonTimes: string[] = ["13:30", "14:20", "15:10", "16:20", "17:10"];
-  private nightTimes: string[] = ["18:30", "19:20", "20:20", "21:10"];
+  morningTimes: string[] = ["07:30", "08:20", "09:10", "10:10", "11:00"];
+  afternoonTimes: string[] = ["13:30", "14:20", "15:10", "16:20", "17:10"];
+  nightTimes: string[] = ["18:30", "19:20", "20:20", "21:10"];
 
-  private weekDays: string[] = ['2', '3', '4', '5', '6'];
+  weekDays: string[] = ['2', '3', '4', '5', '6'];
 
   private afternoon: string;
   private morning: string;
