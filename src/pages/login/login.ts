@@ -45,12 +45,12 @@ export class LoginPage {
       // match.$link - the full link data
       let code = (match.$link['queryString']);
       code = code.replace('code=', "");
-      code = code.replace('&state=E3ZYKC1T6H2yP4z', '');
+      code = code.replace('&state=E3ZYKC1T6H2yP4z', '');     
       this.loginProvider.authSetic(code)
         .map(res => res.json())
         .subscribe(res => {
           this.doLogin(res['access_token']);
-        });
+        }, err => alert(err));
     }, (nomatch) => {
       console.error('Got a deeplink that didn\'t match', nomatch);
     });
@@ -90,7 +90,17 @@ export class LoginPage {
   }
 
   prepareLogin() {
-    this.browser = this.iab.create('https://sistemas.homologacao.ufsc.br/oauth2.0/authorize?client_id=oauth&client_secret=segredo&redirect_uri=ufsclogin://setic_oauth_example.ufsc.br&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true', '_system', { location: 'yes'});
+    let api_key = 'oauth';
+    // let api_key = 'tccphpils';
+    let secret_key = 'segredo';
+    // let secret_key = 'Gto1W3ErSqWWdmASpb5CsqqPkgjNv8';
+    let redirect_url = 'ufsclogin://setic_oauth_example.ufsc.br';
+    // let redirect_url = 'tccphpils://tccphpils.setic_oauth.ufsc.br';
+    let site = 'https://sistemas.homologacao.ufsc.br/oauth2.0/';
+    // let site = 'https://sistemas.ufsc.br/oauth2.0/';
+
+    let url = site + 'authorize?client_id='+ api_key +'&client_secret='+ secret_key +'&redirect_uri=' + redirect_url + '&state=E3ZYKC1T6H2yP4z&response_type=code&bypass_approval_prompt=true'; //&bypass_approval_prompt=true
+    this.browser = this.iab.create(url, '_system', { location: 'yes'});
     
     this.browser.close();
     // this.doLogin("AT-10-XSLAp9Ec0eEHo02aMoUhBzpdU66bTGmoNYO");
