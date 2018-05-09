@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 import { Chart } from 'chart.js';
 import { EstatisticaProvider } from '../../providers/estatistica/estatistica';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -31,7 +32,8 @@ export class StatisticsPage {
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
         public estatisticaProvider: EstatisticaProvider,
-        private storage: Storage) {
+        private storage: Storage,
+        public translateService: TranslateService) {
     }
 
     ionViewDidLoad() {
@@ -79,7 +81,7 @@ export class StatisticsPage {
                 labels: this.estatistic.semesters,
                 datasets: [
                     {
-                        label: "Seu IA",
+                        label: this.translateService.instant('YOUR_IA'),
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(75,192,192,0.4)",
@@ -101,7 +103,7 @@ export class StatisticsPage {
                         spanGaps: false,
                     },
                     {
-                        label: "IA médio do curso",
+                        label: this.translateService.instant('AVERAGE_COURSE_IA'),
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(75,192,192,0.4)",
@@ -134,7 +136,7 @@ export class StatisticsPage {
 
             type: 'doughnut',
             data: {
-                labels: ["Semestres restantes", "Semestres cursados"],
+                labels: [this.translateService.instant('SEMESTERS_REMAINING'), this.translateService.instant('SEMESTERS_STUDIED')],
                 datasets: [{
                     label: '# of Votes',
                     data: [this.semestersYears.length, this.estatistic.semesters.length],
