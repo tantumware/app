@@ -49,7 +49,7 @@ export class DefineConstraintsPage {
   }
 
   ionViewDidLoad() {
-    this.storage.get(StorageKeys.CONSTRAINT).then((val) => {
+    this.storage.get(StorageKeys.RESULT).then((val) => {
       if (val) {
         this.navCtrl.push('ResultadoPage');
       }
