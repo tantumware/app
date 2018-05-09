@@ -19,7 +19,7 @@ export class DefineConstraintsPage {
 
   passo: string = '1';
 
-  private botao: string = this.passo == "3" ? "Gerar grade de horários" : "Próximo Passo";
+  private botao: string = this.passo == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');
 
   private periodosSelected: string[] = [];
 
