@@ -1,25 +1,23 @@
 import { Constraints } from './../../models/constraints';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Api } from '../providers';
 import 'rxjs/add/operator/map';
+import { StorageKeys } from './../../utils/storage-keys';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class SubjectsProvider {
 
-  constructor(public http: Http, public api: Api) {
+  constructor(public api: Api, private storage: Storage) {
   }
 
   allSubjects(): any {
-    let seq = this.api.get('subjects').share();
-
+    let seq = this.api.get('subjects', ['token'], [this.storage.get(StorageKeys.TOKEN)]).share();
     return seq;
   }
 
   calculateSemester(constraints: Constraints): any {
-    let body = new FormData();
-    let seq = this.api.post('calculate-semester', constraints).share();
-    
+    let seq = this.api.post('calculate-semester', constraints, ['token'], [this.storage.get(StorageKeys.TOKEN)]).share();    
     return seq;
   }
 

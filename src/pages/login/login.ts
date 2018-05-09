@@ -1,12 +1,9 @@
 import { LoginProvider } from './../../providers/login-provider/login-provider';
-import { Account } from './../../models/account';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, LoadingController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { StorageKeys } from '../../utils/storage-keys';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { Deeplinks } from '@ionic-native/deeplinks';
 
 @IonicPage()
 @Component({
@@ -22,8 +19,6 @@ export class LoginPage {
 
   idioma = "pt";
 
-  private browser;
-
   manterConectado: boolean = true;
 
   constructor(public navCtrl: NavController,
@@ -31,10 +26,11 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     private storage: Storage,
-    public loadingCtrl: LoadingController,
-    private iab: InAppBrowser,
-    private deeplinks: Deeplinks,
-    private plataform: Platform) {
+    public loadingCtrl: LoadingController) {
+    // private iab: InAppBrowser,
+    // private deeplinks: Deeplinks,
+    // private plataform: Platform) {
+
 
     // this.deeplinks.routeWithNavController(this.navCtrl, {
     //   '*': LoginPage

@@ -13,7 +13,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Deeplinks } from '@ionic-native/deeplinks';
 
-import { Items } from '../mocks/providers/items';
 import { LoginProvider } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
@@ -50,7 +49,6 @@ export function HttpLoaderFactory(http: Http) {
   ],
   providers: [
     Api,
-    Items,
     LoginProvider,
     Camera,
     GoogleMaps,

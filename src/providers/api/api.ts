@@ -8,11 +8,11 @@ import { Http, RequestOptions, URLSearchParams, Headers } from '@angular/http';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://localhost:8080/v1';
+  // url: string = 'http://localhost:8080/v1';
   // url: string = 'http://192.168.0.3:8080/v1';
   // url: string = 'http://tccrest.pedro.pacheco.vms.ufsc.br:8080/v1';
   // A24cPmgdCw
-  // private url: string = 'https://radiant-wave-75942.herokuapp.com/v1';
+  private url: string = 'https://radiant-wave-75942.herokuapp.com/v1';
 
   constructor(public http: Http) {
   }
@@ -39,10 +39,25 @@ export class Api {
     return this.http.get(this.url + '/' + endpoint, options);
   }
 
-  post(endpoint: string, body: any, options?: RequestOptions) {
+  post(endpoint: string, body: any, params?: any, vals?: any, options?: RequestOptions) {
     let h: Headers = new Headers();
     h.append('Content-Type', 'application/json; charset=UTF-8');
-    return this.http.post(this.url + '/' + endpoint, body, { headers: h });
+
+    if (!options) {
+      options = new RequestOptions();
+      options.headers = h;
+    }
+
+
+    if (params) {
+      let p = new URLSearchParams();
+      for (let k in params) {
+        p.set(params[k], vals[k]);
+      }
+      options.search = !options.search && p || options.search;
+    }
+
+    return this.http.post(this.url + '/' + endpoint, body, options);
   }
 
   put(endpoint: string, body: any, options?: RequestOptions) {

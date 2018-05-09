@@ -1,4 +1,3 @@
-import { Subject } from './../../models/subject';
 import { StorageKeys } from './../../utils/storage-keys';
 import { Estatistica } from './../../models/estatistica';
 import { Component, ViewChild } from '@angular/core';
