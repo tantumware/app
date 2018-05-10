@@ -17,6 +17,8 @@ import { SubjectsProvider } from './../../providers/subjects/subjects';
 })
 export class DefineConstraintsPage {
 
+  placeholder = this.translate.instant('NAME_OR_CODE');
+
   passo: string = '1';
 
   private botao: string = this.passo == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');

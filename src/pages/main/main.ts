@@ -66,7 +66,7 @@ export class MainPage {
     if (this.navCtrl.length() > 1) {
       this.navCtrl.remove(0);
     }
-    this.storage.set(StorageKeys.TOKEN, null);
+    this.storage.remove(StorageKeys.TOKEN);
     this.navCtrl.push('LoginPage');
   }
 

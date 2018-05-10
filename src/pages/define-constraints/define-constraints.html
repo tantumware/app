@@ -39,13 +39,13 @@
 
   <div [ngClass]="getClass('2')">
     <p>{{ 'SUBJECTS_I_WANT_TO_STUDY' | translate }}</p>
-    <ion-searchbar (search)="searchMateria()" placeholder="Nome ou código" [(ngModel)]="busca"></ion-searchbar>
+    <ion-searchbar (search)="searchMateria()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
     <subject-action-list [subjects]="getSubjectsWanted()"></subject-action-list>
   </div>
 
   <div [ngClass]="getClass('3')">
     <p>{{ 'SUBJECTS_I_DONT_WANT_TO_STUDY' | translate }}</p>
-    <ion-searchbar (search)="searchMateria()" placeholder="Nome ou código" [(ngModel)]="busca"></ion-searchbar>
+    <ion-searchbar (search)="searchMateria()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
     <subject-action-list [subjects]="getSubjectsExcluded()"></subject-action-list>
   </div>
 
