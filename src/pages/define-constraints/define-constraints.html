@@ -25,9 +25,9 @@
 
     <p>{{ 'CREDIT_INTERVAL' | translate }}</p>
     <ion-item>
-      <ion-range dualKnobs="true" pin="true" [(ngModel)]="credits" class="intervalo" color="main-color">
-        <ion-label range-left>-0</ion-label>
-        <ion-label range-right>100</ion-label>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="credits" class="intervalo" color="main-color" min=10 max=30>
+        <ion-label range-left>10</ion-label>
+        <ion-label range-right>30</ion-label>
       </ion-range>
     </ion-item>
 
