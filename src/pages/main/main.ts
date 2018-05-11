@@ -19,14 +19,16 @@ export class MainPage {
 
   private account: Account;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private storage: Storage, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private storage: Storage,
     public translateService: TranslateService,
     private scheduleProvider: ScheduleProvider) {
   }
 
   ionViewDidLoad() {
+    this.navCtrl.setRoot(this.navCtrl.getActive());
+
     this.storage.get(StorageKeys.SCHEDULE).then(d => {
       if (d) {
         this.subjects = d;
@@ -37,15 +39,15 @@ export class MainPage {
 
     // mudar esse ano automaticamente
     this.scheduleProvider.schedule("2018-1")
-    .map(res => res.json())
-    .subscribe(res => {
-      if (res.success) {
-        this.subjects = res.result.subjects;
-        this.storage.set(StorageKeys.SCHEDULE, this.subjects);
-      }
-    }, err => {
-      console.error('ERROR', err);
-    });
+      .map(res => res.json())
+      .subscribe(res => {
+        if (res.success) {
+          this.subjects = res.result.subjects;
+          this.storage.set(StorageKeys.SCHEDULE, this.subjects);
+        }
+      }, err => {
+        console.error('ERROR', err);
+      });
   }
 
   onHorariosClicked(): void {
@@ -73,7 +75,7 @@ export class MainPage {
   onEstatisticaClicked(): void {
     this.navCtrl.push('StatisticsPage');
   }
-  
+
   getDisciplinas() {
     return SubjectHelper.nextTwo(this.subjects);
   }

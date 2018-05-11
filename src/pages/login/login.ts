@@ -61,6 +61,10 @@ export class LoginPage {
     });
   }
 
+  ionViewDidLoad(){
+    this.navCtrl.setRoot(this.navCtrl.getActive());
+  }
+
   ionViewWillEnter() {
     this.username = null;
     this.password = null;
