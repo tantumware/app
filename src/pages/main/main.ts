@@ -15,7 +15,7 @@ import { SubjectHelper } from '../../utils/subject-helper';
 })
 export class MainPage {
 
-  private disciplinas: Subject[];
+  private subjects: Subject[];
 
   private account: Account;
 
@@ -27,9 +27,9 @@ export class MainPage {
   }
 
   ionViewDidLoad() {
-    this.storage.get('disciplinas').then(d => {
+    this.storage.get(StorageKeys.SCHEDULE).then(d => {
       if (d) {
-        this.disciplinas = d;
+        this.subjects = d;
       }
     });
 
@@ -40,8 +40,8 @@ export class MainPage {
     .map(res => res.json())
     .subscribe(res => {
       if (res.success) {
-        this.disciplinas = res.result.disciplinas;
-        this.storage.set('disciplinas', this.disciplinas);
+        this.subjects = res.result.subjects;
+        this.storage.set(StorageKeys.SCHEDULE, this.subjects);
       }
     }, err => {
       console.error('ERROR', err);
@@ -75,9 +75,7 @@ export class MainPage {
   }
   
   getDisciplinas() {
-    return SubjectHelper.nextTwo(this.disciplinas);
-    // return [new Subject("Linguagens formais e compiladores", "INE1337", 1, 2, true, ["3.0820-2 / CTC-CTC102"], null), 
-    // new Subject("Linguagens formais e compiladores", "INE1337", 1, 2, true, ["3.0820-2 / CTC-CTC102"], null)];
+    return SubjectHelper.nextTwo(this.subjects);
   }
 
 }

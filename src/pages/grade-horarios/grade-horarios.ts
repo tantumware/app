@@ -1,3 +1,4 @@
+import { StorageKeys } from './../../utils/storage-keys';
 import { SubjectHelper } from './../../utils/subject-helper';
 import { Component, ViewChild } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -16,11 +17,11 @@ export class GradeHorariosPage {
 
   private passo: string;
 
-  private dia: number;
+  private day: number;
 
-  private dias: Dia[];
+  private days: Dia[];
 
-  private disciplinas: Subject[];
+  private subjects: Subject[];
 
   @ViewChild('slides') slides: Slides;
 
@@ -29,15 +30,15 @@ export class GradeHorariosPage {
     private storage: Storage, 
     private cal: CalendarUtils) {
       
-    this.dia = new Date().getDay() - 1; // começa na segunda
-    if (this.dia < 0) {
-      this.dia = 0;
+    this.day = new Date().getDay() - 1; // começa na segunda
+    if (this.day < 0) {
+      this.day = 0;
     }
-    this.dias = this.cal.getAllDias();
+    this.days = this.cal.getAllDias();
 
-    this.storage.get('disciplinas').then(d => {
+    this.storage.get(StorageKeys.SCHEDULE).then(d => {
       if (d) {
-        this.disciplinas = d;
+        this.subjects = d;
       }
     });
   }
@@ -51,7 +52,7 @@ export class GradeHorariosPage {
 
   onSlideChanged(event: any): void {
     if (event._activeIndex < 5 && event._activeIndex >= 0) {
-      this.dia = event._activeIndex;
+      this.day = event._activeIndex;
     }
   }
 
@@ -64,38 +65,38 @@ export class GradeHorariosPage {
   }
 
   swipeRight(): void {
-    if (this.dia < 5) {
-      this.dia = this.dia + 1;
+    if (this.day < 5) {
+      this.day = this.day + 1;
     }
-    this.slides.slideTo(this.dia);
+    this.slides.slideTo(this.day);
   }
 
   swipeLeft(): void {
-    if (this.dia > 0) {
-      this.dia = this.dia - 1;
+    if (this.day > 0) {
+      this.day = this.day - 1;
     }
-    this.slides.slideTo(this.dia);
+    this.slides.slideTo(this.day);
   }
 
-  onDiaClicked(dia: Dia): void {
-    this.dia = this.dias.indexOf(dia);
-    this.slides.slideTo(this.dia);
+  onDiaClicked(day: Dia): void {
+    this.day = this.days.indexOf(day);
+    this.slides.slideTo(this.day);
   }
 
-  getDisciplinas(dia?: string): Subject[] {
-    return SubjectHelper.list(this.disciplinas, dia);
+  getDisciplinas(day?: string): Subject[] {
+    return SubjectHelper.list(this.subjects, day);
   }
 
   getAllDisciplinas(): Subject[] {
-    return SubjectHelper.list(this.disciplinas);
+    return SubjectHelper.list(this.subjects);
   }
 
-  getClassDia(dia: Dia): string {
+  getClassDia(day: Dia): string {
     let clazz: string = "";
-    if (!dia.visible) {
+    if (!day.visible) {
       clazz += "dia-hidden ";
     }
-    if (this.dias[this.dia].nomeAbreviado == dia.nomeAbreviado) {
+    if (this.days[this.day].nomeAbreviado == day.nomeAbreviado) {
       clazz += "dia-selected";
     }
     return clazz;

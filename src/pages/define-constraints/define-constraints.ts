@@ -25,9 +25,9 @@ export class DefineConstraintsPage {
 
   private periodosSelected: string[] = [];
 
-  private subjectsWanted = [];
+  private subjectsWanted: Subject[] = [];
 
-  private subjectsExcluded = [];
+  private subjectsExcluded: Subject[] = [];
 
   @ViewChild(CapsulaComponent) capsulaComponent;
 
@@ -67,7 +67,7 @@ export class DefineConstraintsPage {
       .map(res => res.json())
       .subscribe(res => {
         if (res.success) {
-          this.subjects = res.result.disciplinas;
+          this.subjects = res.result.subjects;
           this.storage.set(StorageKeys.ALL_SUBJECTS, this.subjects);
         }
       }, err => {
@@ -122,7 +122,13 @@ export class DefineConstraintsPage {
       periods.push(2);
     }
     
-    return new Constraints(periods, this.credits.lower, this.credits.upper, this.equivalent, this.subjectsWanted, this.subjectsExcluded);
+    let subjectsWantedCode: string[] = [];
+    this.subjectsWanted.forEach(s => subjectsWantedCode.push(s.codigo));
+
+    let subjectsNotWantedCode: string[] = [];
+    this.subjectsExcluded.forEach(s => subjectsNotWantedCode.push(s.codigo));
+
+    return new Constraints(periods, this.credits.lower, this.credits.upper, this.equivalent, subjectsWantedCode, subjectsNotWantedCode);
   }
 
   getPeriods(): string[] {

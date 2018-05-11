@@ -70,7 +70,7 @@ export class StatisticsPage {
     }
 
     getSubjects(semester: string) {
-        return this.semesters[semester].disciplinas; 
+        return this.semesters[semester].subjects; 
     }
 
     showLineChart() {
