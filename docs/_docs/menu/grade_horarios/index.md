@@ -31,7 +31,10 @@ order: 1
 - **Aba:** Diário;
 - **Dia da semana:** Dia da semana no qual o aplicativo está sendo utilizado.
 
-**2.** Os turnos / dias que não possuírem disciplinas alocadas não devem ser exibidos.
+**2.** Sobre os dias que não possuírem disciplinas alocadas:
+
+- Caso não seja fim de semana: Exibir o dia normalmente, porém apresentar a mensagem: "Não há aulas de nenhuma disciplina neste dia";
+- Caso seja fim de semana: Não exibir o dia.
 
 **3.** Os nomes das disciplinas não devem ser traduzidos para outros idiomas.
 
@@ -43,11 +46,11 @@ order: 1
 
 **6.** O dia da semana que está sendo exibido deve receber um destaque de acordo com o seguinte protótipo. **Protótipo**
 
-**7.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhes da disciplina **LINK**.
+**7.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhes da disciplina {% link detalhes_disciplina %}.
 
 ###### Semanal
 
-**8.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhe da disciplina **LINK**.
+**8.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhe da disciplina {% link grade__horarios_semanal %}.
 
 ### Internacionalização
 

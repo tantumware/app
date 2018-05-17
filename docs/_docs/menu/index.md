@@ -7,6 +7,7 @@ order: 2
 
 ### Opções
 
+- Próximas aulas;
 - Grade de horários;
 - Geração de grade de horários;
 - Estatísticas;
@@ -14,9 +15,11 @@ order: 2
 
 ### Regras
 
-**1.** O menu deve vir posicionado por padrão sobre a opção **Grade de horários**.
+**1.** Sobre a opção **Próximas aulas**:
 
-**2.** Para realizar a transição entre os módulos, o usuário deve arrastar a tela para o lado correspondente para avançar ou retroceder entre as opções.
+- Deve exibir os dois próximos horários de aulas, da forma:
+	- Definir como vai ser feita a passagem das aulas.
+- Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhes da disciplina {% link detalhes_disciplina %}.
 
 **3.** Cada opção deve possuir um ícone informativo. Ao selecionar a informação, cada módulo deve possuir sua respectiva informação de contexto, de acordo com o seguinte mapeamento:
 

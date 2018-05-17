@@ -17,10 +17,8 @@ order: 3
 | Português | Inglês | Espanhol  |
 | --------- | ------ | --------- |
 | Resultado | Result | Resultado | 
-| Devido ao grande número de acessos ao sistema de montagem de horários, seu resultado pode demorar um pouco. Deseja ser notificado quando o processo finalizar? |
-| Due to the large number of accesses to the scheduling system, its result may take a while. Do you want to be notified when the process ends? |
-| Debido al gran número de accesos al sistema de montaje de horarios, su resultado puede tardar un poco. ¿Desea ser notificado cuando el proceso finalice? |
-| Notificar-me ao final do processo Z Notify me at the end of the process | Notificarme al final del proceso |
+| Devido ao grande número de acessos ao sistema de montagem de horários, seu resultado pode demorar um pouco. Deseja ser notificado quando o processo finalizar? | Due to the large number of accesses to the scheduling system, its result may take a while. Do you want to be notified when the process ends? | Debido al gran número de accesos al sistema de montaje de horarios, su resultado puede tardar un poco. ¿Desea ser notificado cuando el proceso finalice? |
+| Notificar-me ao final do processo | Notify me at the end of the process | Notificarme al final del proceso |
 
 
 

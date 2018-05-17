@@ -14,7 +14,10 @@ order: 1
 
 # Regras
 
-**1.** Os dias que não possuírem disciplinas alocadas não devem ser exibidos.
+**1.** Sobre os dias que não possuírem disciplinas alocadas:
+
+- Caso não seja fim de semana: Exibir o dia normalmente, porém apresentar a mensagem: "Não há aulas de nenhuma disciplina neste dia";
+- Caso seja fim de semana: Não exibir o dia.
 
 **2.** Os nomes das disciplinas não devem ser traduzidos para outros idiomas.
 
