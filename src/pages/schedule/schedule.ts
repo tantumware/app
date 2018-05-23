@@ -10,10 +10,10 @@ import { Subject } from './../../models/subject';
 
 @IonicPage()
 @Component({
-  selector: 'page-grade-horarios',
-  templateUrl: 'grade-horarios.html',
+  selector: 'page-schedule',
+  templateUrl: 'schedule.html',
 })
-export class GradeHorariosPage {
+export class SchedulePage {
 
   private passo: string;
 

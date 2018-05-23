@@ -51,7 +51,7 @@ export class MainPage {
   }
 
   onHorariosClicked(): void {
-    this.navCtrl.push('GradeHorariosPage');
+    this.navCtrl.push('SchedulePage');
   }
 
   onGerarHorarioClicked(): void {

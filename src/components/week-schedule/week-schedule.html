@@ -1,5 +1,5 @@
 <p class="period">{{ morning }}</p>
-<table class="grade-horario-table" (onSwiped)="onSwiped($event)">
+<table class="week-schedule-table" (onSwiped)="onSwiped($event)">
   <tr>
     <th>{{ monday }}</th>
     <th>{{ tuesday }}</th>
@@ -19,7 +19,7 @@
 </table>
 
 <p class="period">{{ afternoon }}</p>
-<table class="grade-horario-table">
+<table class="week-schedule-table">
   <tr *ngFor='let time of afternoonTimes'>
     <td *ngFor='let day of weekDays' [ngClass]='getClass(time)' (click)='onDisciplinaClicked(day, time)'>
       {{time}}
@@ -31,7 +31,7 @@
 </table>
 
 <p class="period">{{ night }}</p>
-<table class="grade-horario-table">
+<table class="week-schedule-table">
     <tr *ngFor='let time of nightTimes'>
         <td *ngFor='let day of weekDays' [ngClass]='getClass(time)' (click)='onDisciplinaClicked(day, time)'>
           {{time}}
