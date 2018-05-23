@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
-import { CapsulaComponent } from '../../components/capsula/capsula';
+import { CapsuleComponent } from '../../components/capsule/capsule';
 import { Subject } from '../../models/subject';
 import { FormatterUtils } from './../../utils/formatter';
 import { SubjectsProvider } from './../../providers/subjects/subjects';
@@ -29,7 +29,7 @@ export class DefineConstraintsPage {
 
   private subjectsExcluded: Subject[] = [];
 
-  @ViewChild(CapsulaComponent) capsulaComponent;
+  @ViewChild(CapsuleComponent) capsuleComponent;
 
   busca: string;
 

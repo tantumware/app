@@ -21,7 +21,7 @@
 
   <div [ngClass]="getClass('1')">
     <span>{{ 'STUDY_SHIFT' | translate }}</span>
-    <capsula [periodos]="getPeriods()" (periodoSelected)="onPeriodoSelected($event)"></capsula> 
+    <capsule [values]="getPeriods()" (valueSelected)="onPeriodoSelected($event)"></capsule> 
 
     <p>{{ 'CREDIT_INTERVAL' | translate }}</p>
     <ion-item>

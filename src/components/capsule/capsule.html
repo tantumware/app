@@ -1,0 +1,3 @@
+<ion-chip *ngFor='let v of values' (click)="onItemClicked(v)" [ngClass]="getClass(v)">
+  <ion-label>{{v}}</ion-label>
+</ion-chip>
