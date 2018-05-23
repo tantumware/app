@@ -57,7 +57,7 @@ export class MainPage {
   onGerarHorarioClicked(): void {
     this.storage.get(StorageKeys.RESULT).then(res => {
       if (res) {
-        this.navCtrl.push('ResultadoPage');
+        this.navCtrl.push('ResultPage');
       } else {
         this.navCtrl.push('DefineConstraintsPage');
       }

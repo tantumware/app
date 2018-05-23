@@ -53,7 +53,7 @@ export class DefineConstraintsPage {
   ionViewDidLoad() {
     this.storage.get(StorageKeys.RESULT).then((val) => {
       if (val) {
-        this.navCtrl.push('ResultadoPage');
+        this.navCtrl.push('ResultPage');
       }
     });
     
@@ -103,7 +103,7 @@ export class DefineConstraintsPage {
     if (this.passo == '3') {
       let constraints: Constraints = this.createConstraints();
       this.storage.set(StorageKeys.CONSTRAINT, constraints);
-      this.navCtrl.push('ResultadoPage');
+      this.navCtrl.push('ResultPage');
     } else {
       this.passo = (Number(this.passo) + 1).toString();
     }

@@ -40,10 +40,10 @@ export class MyApp {
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' },
-    { title: 'Sobre', component: 'SobrePage' }, //
+    { title: 'About', component: 'AboutPage' }, //
     { title: 'Main', component: 'MainPage'}, //
     { title: 'Definir Critérios', component: 'DefineConstraintsPage'}, //
-    { title: 'Resultado', component: 'ResultadoPage'}
+    { title: 'Result', component: 'ResultPage'}
   ]
 
   constructor(private translate: TranslateService, private platform: Platform, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

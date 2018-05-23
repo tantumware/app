@@ -148,7 +148,6 @@ export class LoginPage {
   }
 
   onSobreClick(): void {
-    // this.plataform.exitApp();
-    this.navCtrl.push('SobrePage');
+    this.navCtrl.push('AboutPage');
   }
 }
