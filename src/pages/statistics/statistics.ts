@@ -27,7 +27,7 @@ export class StatisticsPage {
 
     public semesters: any;
 
-    passo: string = '1';
+    step: string = '1';
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -66,7 +66,7 @@ export class StatisticsPage {
             });
     }
 
-    onPassoChanged() {
+    onStepChanged() {
     }
 
     getSubjects(semester: string) {
@@ -155,7 +155,7 @@ export class StatisticsPage {
     }
 
     getClass(p: string): string {
-        return this.passo == p ? "" : "passo-hidden";;
+        return this.step == p ? "" : "step-hidden";;
     }
 
 }

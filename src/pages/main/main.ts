@@ -50,11 +50,11 @@ export class MainPage {
       });
   }
 
-  onHorariosClicked(): void {
+  onScheduleClicked(): void {
     this.navCtrl.push('SchedulePage');
   }
 
-  onGerarHorarioClicked(): void {
+  onScheduleGenerationClicked(): void {
     this.storage.get(StorageKeys.RESULT).then(res => {
       if (res) {
         this.navCtrl.push('ResultPage');
@@ -64,7 +64,7 @@ export class MainPage {
     });
   }
 
-  onSairClicked(): void {
+  onLogOutClicked(): void {
     if (this.navCtrl.length() > 1) {
       this.navCtrl.remove(0);
     }
@@ -72,11 +72,11 @@ export class MainPage {
     this.navCtrl.push('LoginPage');
   }
 
-  onEstatisticaClicked(): void {
+  onStatisticsClicked(): void {
     this.navCtrl.push('StatisticsPage');
   }
 
-  getDisciplinas() {
+  getSubjects() {
     return SubjectHelper.nextTwo(this.subjects);
   }
 

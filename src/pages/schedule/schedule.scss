@@ -1,28 +1,28 @@
 page-schedule {
 
-    .div-diario {
+    .div-daily {
         margin-top: 50px;
         height: 75%;
     }
 
-    .dias {
+    .days {
         display: flex;
         width: 100%;
         justify-content: space-around;
     }
 
-    .dia-hidden {
+    .day-hidden {
         display: none;
     }
 
-    .dia-selected {
+    .day-selected {
         color: #e67e22;
         font-size: 20px;
         position: relative;
         bottom: 5px;
     }
 
-    .passo-hidden {
+    .step-hidden {
         display: none;
     }
     

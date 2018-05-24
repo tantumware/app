@@ -20,17 +20,6 @@ page-main {
         background-color: color($colors, main-color);
     }
 
-    .semestre {
-        color: #2d2d2d;
-        margin-top: 0px;
-        font-size: 14px;
-    }
-
-    .nome {
-        color: #2d2d2d;
-        margin-bottom: 0px;
-    }
-
     .main-content {
         display: flex;
         display: -webkit-flex;
@@ -38,7 +27,7 @@ page-main {
         justify-content: center;
     }
 
-    .button-sair{
+    .button-log-out {
         border: 1px solid color($colors, main-color);
         background-color: $background-color;
         color: color($colors, main-color);
@@ -74,10 +63,6 @@ page-main {
         position: relative;
         bottom: 8px;
         color: #3d3d3d;
-    }
-
-    .main-disciplina {
-        height: 50px;
     }
 
     .next-classes {

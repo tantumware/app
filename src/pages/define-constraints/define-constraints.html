@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-segment [(ngModel)]="passo" (ionChange)="onPassoChanged($event)" color="main-color">
+  <ion-segment [(ngModel)]="step" (ionChange)="onStepChanged($event)" color="main-color">
     <ion-segment-button value="1">
       {{ 'STEP_1' | translate }}
     </ion-segment-button>
@@ -21,11 +21,11 @@
 
   <div [ngClass]="getClass('1')">
     <span>{{ 'STUDY_SHIFT' | translate }}</span>
-    <capsule [values]="getPeriods()" (valueSelected)="onPeriodoSelected($event)"></capsule> 
+    <capsule [values]="getPeriods()" (valueSelected)="onPeriodSelected($event)"></capsule> 
 
     <p>{{ 'CREDIT_INTERVAL' | translate }}</p>
     <ion-item>
-      <ion-range dualKnobs="true" pin="true" [(ngModel)]="credits" class="intervalo" color="main-color" min=10 max=30>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="credits" color="main-color" min=10 max=30>
         <ion-label range-left>10</ion-label>
         <ion-label range-right>30</ion-label>
       </ion-range>
@@ -39,16 +39,16 @@
 
   <div [ngClass]="getClass('2')">
     <p>{{ 'SUBJECTS_I_WANT_TO_STUDY' | translate }}</p>
-    <ion-searchbar (search)="searchMateria()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
+    <ion-searchbar (search)="searchSubject()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
     <subject-action-list [subjects]="getSubjectsWanted()"></subject-action-list>
   </div>
 
   <div [ngClass]="getClass('3')">
     <p>{{ 'SUBJECTS_I_DONT_WANT_TO_STUDY' | translate }}</p>
-    <ion-searchbar (search)="searchMateria()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
+    <ion-searchbar (search)="searchSubject()" placeholder='{{placeholder}}' [(ngModel)]="busca"></ion-searchbar>
     <subject-action-list [subjects]="getSubjectsExcluded()"></subject-action-list>
   </div>
 
-  <button ion-button class="next-step-button" (click)="btnProximoPassoClicked()">{{ botao }}</button>
+  <button ion-button class="next-step-button" (click)="btnNextStepClicked()">{{ button }}</button>
 
 </ion-content>

@@ -4,7 +4,7 @@
 
     <ion-item>
       <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
-      <ion-select [(ngModel)]="idioma" (ionChange)="idiomaChanged()">
+      <ion-select [(ngModel)]="language" (ionChange)="languageChanged()">
         <ion-option value="pt">Português</ion-option>
         <ion-option value="en">English</ion-option>
         <ion-option value="es">Español</ion-option>
@@ -25,7 +25,7 @@
 
         <ion-item class="manter-conectado">
           <ion-label>{{ 'KEEP_LOGGED_IN' | translate }}</ion-label>
-          <ion-toggle [(ngModel)]="manterConectado" color="main-color" [ngModelOptions]="{standalone: true}"></ion-toggle>
+          <ion-toggle [(ngModel)]="keepLoggedIn" color="main-color" [ngModelOptions]="{standalone: true}"></ion-toggle>
         </ion-item>
 
         <button ion-button color="main-color" class="login-button">{{ 'LOGIN_BUTTON' | translate }}</button>
@@ -33,6 +33,6 @@
       </ion-list>
     </form>
     
-    <button ion-button color="main-color" (click)='onSobreClick()' class="sobre-button">{{ 'ABOUT' | translate }}</button>
+    <button ion-button color="main-color" (click)='onAboutClicked()' class="sobre-button">{{ 'ABOUT' | translate }}</button>
   </ion-list>
 </ion-content>
