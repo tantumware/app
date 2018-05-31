@@ -17,9 +17,9 @@ export class LoginPage {
   username: string;
   password: string;
 
-  idioma = "pt";
+  language = "pt";
 
-  manterConectado: boolean = true;
+  keepLoggedIn: boolean = true;
 
   constructor(public navCtrl: NavController,
     public loginProvider: LoginProvider,
@@ -53,10 +53,10 @@ export class LoginPage {
 
     this.translateService.setDefaultLang('pt');
 
-    this.storage.get(StorageKeys.LANGUAGE).then(idioma => {
-      if (idioma) {
-        this.idioma = idioma;
-        this.translateService.use(this.idioma);
+    this.storage.get(StorageKeys.LANGUAGE).then(language => {
+      if (language) {
+        this.language = language;
+        this.translateService.use(this.language);
       }
     });
   }
@@ -70,7 +70,7 @@ export class LoginPage {
     this.password = null;
     this.showView = false;
 
-    this.idioma = this.translateService.currentLang;
+    this.language = this.translateService.currentLang;
     this.checkKeepLoggedIn();
   }
 
@@ -84,9 +84,9 @@ export class LoginPage {
     });
   }
 
-  idiomaChanged(): void {
-    this.translateService.use(this.idioma);
-    this.storage.set(StorageKeys.LANGUAGE, this.idioma);
+  languageChanged(): void {
+    this.translateService.use(this.language);
+    this.storage.set(StorageKeys.LANGUAGE, this.language);
   }
 
   prepareLogin() {
@@ -107,7 +107,7 @@ export class LoginPage {
   }
 
   doLogin(token: string) {
-    this.storage.set(StorageKeys.KEEP_LOGGED_IN, this.manterConectado);
+    this.storage.set(StorageKeys.KEEP_LOGGED_IN, this.keepLoggedIn);
     let loading = this.loadingCtrl.create({
       content: this.translateService.instant("PLEASE_WAIT")
     });
@@ -147,8 +147,7 @@ export class LoginPage {
     toast.present();
   }
 
-  onSobreClick(): void {
-    // this.plataform.exitApp();
-    this.navCtrl.push('SobrePage');
+  onAboutClicked(): void {
+    this.navCtrl.push('AboutPage');
   }
 }

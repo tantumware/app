@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 
-import { CapsulaComponent } from '../../components/capsula/capsula';
+import { CapsuleComponent } from '../../components/capsule/capsule';
 import { Subject } from '../../models/subject';
 import { FormatterUtils } from './../../utils/formatter';
 import { SubjectsProvider } from './../../providers/subjects/subjects';
@@ -19,17 +19,17 @@ export class DefineConstraintsPage {
 
   placeholder = this.translate.instant('NAME_OR_CODE');
 
-  passo: string = '1';
+  step: string = '1';
 
-  private botao: string = this.passo == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');
+  private button: string = this.step == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');
 
-  private periodosSelected: string[] = [];
+  private periodsSelected: string[] = [];
 
   private subjectsWanted: Subject[] = [];
 
   private subjectsExcluded: Subject[] = [];
 
-  @ViewChild(CapsulaComponent) capsulaComponent;
+  @ViewChild(CapsuleComponent) capsuleComponent;
 
   busca: string;
 
@@ -53,7 +53,7 @@ export class DefineConstraintsPage {
   ionViewDidLoad() {
     this.storage.get(StorageKeys.RESULT).then((val) => {
       if (val) {
-        this.navCtrl.push('ResultadoPage');
+        this.navCtrl.push('ResultPage');
       }
     });
     
@@ -76,49 +76,49 @@ export class DefineConstraintsPage {
   }
 
   ionViewWillEnter(){
-   this.passo == '1';
+   this.step == '1';
   }
 
-  onPeriodoSelected(event: string[]) {
-    this.periodosSelected = event;
+  onPeriodSelected(event: string[]) {
+    this.periodsSelected = event;
   }
 
-  searchMateria(): void {
+  searchSubject(): void {
     this.doCheckbox(this.busca);
   }
 
-  getClass(passo: string): string {
-    if (this.passo == passo) {
-      return "passo";
+  getClass(step: string): string {
+    if (this.step == step) {
+      return "step";
     } else {
-      return "passo passo-hidden";
+      return "step step-hidden";
     }
   }
 
-  onPassoChanged(event: any): void {
-    this.botao = this.passo == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');
+  onStepChanged(event: any): void {
+    this.button = this.step == "3" ? this.translate.instant('GENERATE_TIME_GRID') : this.translate.instant('NEXT_STEP');
   }
 
-  btnProximoPassoClicked(): void {
-    if (this.passo == '3') {
+  btnNextStepClicked(): void {
+    if (this.step == '3') {
       let constraints: Constraints = this.createConstraints();
       this.storage.set(StorageKeys.CONSTRAINT, constraints);
-      this.navCtrl.push('ResultadoPage');
+      this.navCtrl.push('ResultPage');
     } else {
-      this.passo = (Number(this.passo) + 1).toString();
+      this.step = (Number(this.step) + 1).toString();
     }
   }
 
   createConstraints(): Constraints {
     let periods: number[] = [];
     
-    if (this.periodosSelected.indexOf(this.translate.instant('MORNING')) > -1) {
+    if (this.periodsSelected.indexOf(this.translate.instant('MORNING')) > -1) {
       periods.push(0);
     }
-    if (this.periodosSelected.indexOf(this.translate.instant('AFTERNOON')) > -1) {
+    if (this.periodsSelected.indexOf(this.translate.instant('AFTERNOON')) > -1) {
       periods.push(1);
     }
-    if (this.periodosSelected.indexOf(this.translate.instant('NIGHT')) > -1) {
+    if (this.periodsSelected.indexOf(this.translate.instant('NIGHT')) > -1) {
       periods.push(2);
     }
     
@@ -170,9 +170,9 @@ export class DefineConstraintsPage {
         if (data) {
           data.forEach(element => {
             console.log(element);
-            if (this.passo == '2') {
+            if (this.step == '2') {
               this.subjectsWanted.push(this.getSubjectByCode(element));
-            } else if (this.passo == '3') {
+            } else if (this.step == '3') {
               this.subjectsExcluded.push(this.getSubjectByCode(element));
             }
           });

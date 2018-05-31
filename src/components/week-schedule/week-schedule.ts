@@ -6,10 +6,10 @@ import { Subject } from '../../models/subject';
 import { ModalHelper } from '../../utils/modal-helper';
 
 @Component({
-  selector: 'grade-horario',
-  templateUrl: 'grade-horario.html'
+  selector: 'week-schedule',
+  templateUrl: 'week-schedule.html'
 })
-export class GradeHorarioComponent {
+export class WeekScheduleComponent {
 
   @Input() subjects: Subject[]
 

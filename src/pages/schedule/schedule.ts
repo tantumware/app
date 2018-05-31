@@ -10,12 +10,12 @@ import { Subject } from './../../models/subject';
 
 @IonicPage()
 @Component({
-  selector: 'page-grade-horarios',
-  templateUrl: 'grade-horarios.html',
+  selector: 'page-schedule',
+  templateUrl: 'schedule.html',
 })
-export class GradeHorariosPage {
+export class SchedulePage {
 
-  private passo: string;
+  private step: string;
 
   private day: number;
 
@@ -30,7 +30,7 @@ export class GradeHorariosPage {
     private storage: Storage, 
     private cal: CalendarUtils) {
       
-    this.day = new Date().getDay() - 1; // começa na segunda
+    this.day = new Date().getDay() - 1; // starts monday
     if (this.day < 0) {
       this.day = 0;
     }
@@ -44,10 +44,10 @@ export class GradeHorariosPage {
   }
 
   ionViewDidLoad() {
-    this.passo = '1';
+    this.step = '1';
   }
 
-  onPassoChanged(): void {
+  onStepChanged(): void {
   }
 
   onSlideChanged(event: any): void {
@@ -78,35 +78,35 @@ export class GradeHorariosPage {
     this.slides.slideTo(this.day);
   }
 
-  onDiaClicked(day: Dia): void {
+  onDayClicked(day: Dia): void {
     this.day = this.days.indexOf(day);
     this.slides.slideTo(this.day);
   }
 
-  getDisciplinas(day?: string): Subject[] {
+  getSubjects(day?: string): Subject[] {
     return SubjectHelper.list(this.subjects, day);
   }
 
-  getAllDisciplinas(): Subject[] {
+  getAllSubjects(): Subject[] {
     return SubjectHelper.list(this.subjects);
   }
 
-  getClassDia(day: Dia): string {
+  getClassDay(day: Dia): string {
     let clazz: string = "";
     if (!day.visible) {
-      clazz += "dia-hidden ";
+      clazz += "day-hidden ";
     }
     if (this.days[this.day].nomeAbreviado == day.nomeAbreviado) {
-      clazz += "dia-selected";
+      clazz += "day-selected";
     }
     return clazz;
   }
 
-  getClass(passo: string): string {
-    if (this.passo == passo) {
+  getClass(step: string): string {
+    if (this.step == step) {
       return "";
     } else {
-      return "passo-hidden";
+      return "step-hidden";
     }
   }
 

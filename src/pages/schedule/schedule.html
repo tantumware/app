@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'SCHEDULE_GRID' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-segment [(ngModel)]="step" (ionChange)="onStepChanged()" color="main-color" class="segment-sticky">
+    <ion-segment-button value="1">
+      {{ 'DAILY' | translate }}
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      {{ 'WEEKLY' | translate }}
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngClass]="getClass('1')" class="div-daily">
+    <div class="days">
+      <span *ngFor="let day of days" [ngClass]="getClassDay(day)" (click)="onDayClicked(day)">{{day.nomeAbreviado}}</span>
+    </div>
+    <ion-slides [initialSlide]="day" [spaceBetween]=5 #slides (ionSlideWillChange)="onSlideChanged($event)">
+      <ion-slide>
+        <subject-list [subjects]="getSubjects('2')" (onSwiped)="onSwiped($event)"></subject-list>
+      </ion-slide>
+      <ion-slide>
+        <subject-list [subjects]="getSubjects('3')" (onSwiped)="onSwiped($event)"></subject-list>
+      </ion-slide>
+      <ion-slide>
+        <subject-list [subjects]="getSubjects('4')" (onSwiped)="onSwiped($event)"></subject-list>
+      </ion-slide>
+      <ion-slide>
+        <subject-list [subjects]="getSubjects('5')" (onSwiped)="onSwiped($event)"></subject-list>
+      </ion-slide>
+      <ion-slide>
+        <subject-list [subjects]="getSubjects('6')" (onSwiped)="onSwiped($event)"></subject-list>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div [ngClass]="getClass('2')">
+    <week-schedule [subjects]="getAllSubjects()"></week-schedule>
+  </div>
+
+
+</ion-content>

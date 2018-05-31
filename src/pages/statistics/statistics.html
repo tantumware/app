@@ -6,7 +6,7 @@
 
 <ion-content padding>
 
-  <ion-segment [(ngModel)]="passo" (ionChange)="onPassoChanged()" color="main-color">
+  <ion-segment [(ngModel)]="step" (ionChange)="onStepChanged()" color="main-color">
     <ion-segment-button value="1">
       {{ 'SUMMARY' | translate }}
     </ion-segment-button>
@@ -16,9 +16,9 @@
   </ion-segment>
 
   <ion-list [ngClass]="getClass('1')">
-      <canvas class="grafico-margin" #doughnutCanvas></canvas>
+      <canvas class="chart-margin" #doughnutCanvas></canvas>
   
-      <canvas class="grafico-margin" #lineCanvas></canvas>
+      <canvas class="chart-margin" #lineCanvas></canvas>
   </ion-list>
 
   <ion-list [ngClass]="getClass('2')">

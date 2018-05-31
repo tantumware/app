@@ -11,10 +11,10 @@ import { Navbar } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-resultado',
-  templateUrl: 'resultado.html',
+  selector: 'page-result',
+  templateUrl: 'result.html',
 })
-export class ResultadoPage {
+export class ResultPage {
 
   private constraints: Constraints;
 

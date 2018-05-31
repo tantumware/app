@@ -1,5 +1,5 @@
 import { StorageKeys } from './../../utils/storage-keys';
-import { Estatistica } from './../../models/estatistica';
+import { Statistics } from './../../models/statistics';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -21,13 +21,13 @@ export class StatisticsPage {
     doughnutChart: any;
     lineChart: any;
 
-    public estatistic: Estatistica;
+    public statistic: Statistics;
 
     public semestersYears: any[] = [];
 
     public semesters: any;
 
-    passo: string = '1';
+    step: string = '1';
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -50,7 +50,7 @@ export class StatisticsPage {
 
         this.storage.get(StorageKeys.STATISTIC).then(e => {
             if (e) {
-                this.estatistic = e;
+                this.statistic = e;
                 this.showDoughnutChart();
                 this.showLineChart();
             }
@@ -59,14 +59,14 @@ export class StatisticsPage {
         this.estatisticaProvider.getEstatisticas()
             .map(res => res.json())
             .subscribe(e => {
-                this.estatistic = e;
+                this.statistic = e;
                 this.storage.set(StorageKeys.STATISTIC, e);
                 this.showDoughnutChart();
                 this.showLineChart();
             });
     }
 
-    onPassoChanged() {
+    onStepChanged() {
     }
 
     getSubjects(semester: string) {
@@ -78,7 +78,7 @@ export class StatisticsPage {
 
             type: 'line',
             data: {
-                labels: this.estatistic.semesters,
+                labels: this.statistic.semesters,
                 datasets: [
                     {
                         label: this.translateService.instant('YOUR_IA'),
@@ -99,7 +99,7 @@ export class StatisticsPage {
                         pointHoverBorderWidth: 2,
                         pointRadius: 1,
                         pointHitRadius: 10,
-                        data: this.estatistic.semestersIA,
+                        data: this.statistic.semestersIA,
                         spanGaps: false,
                     },
                     {
@@ -121,7 +121,7 @@ export class StatisticsPage {
                         pointHoverBorderWidth: 2,
                         pointRadius: 1,
                         pointHitRadius: 10,
-                        data: this.estatistic.courseIA,
+                        data: this.statistic.courseIA,
                         spanGaps: false,
                     }
 
@@ -139,7 +139,7 @@ export class StatisticsPage {
                 labels: [this.translateService.instant('SEMESTERS_REMAINING'), this.translateService.instant('SEMESTERS_STUDIED')],
                 datasets: [{
                     label: '# of Votes',
-                    data: [this.semestersYears.length, this.estatistic.semesters.length],
+                    data: [this.semestersYears.length, this.statistic.semesters.length],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)'
@@ -155,7 +155,7 @@ export class StatisticsPage {
     }
 
     getClass(p: string): string {
-        return this.passo == p ? "" : "passo-hidden";;
+        return this.step == p ? "" : "step-hidden";;
     }
 
 }
