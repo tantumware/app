@@ -34,19 +34,19 @@ order: 1
 
 **3.** Ao acionar a ação **Manter conectado**, pular a etapa de login a cada entrada do usuário no sistema.
 
-**4.** Ao acionar a ação **Sobre** redirecionar o usuário para a tela **ADICIONAR LINK**
+**4.** Ao acionar a ação **Sobre** redirecionar o usuário para a tela {% link sobre %}.
 
 ### Internacionalização
 
 | Português        | Inglês           | Espanhol           |
 | ---------------- | ---------------- | ------------------ |
 | Idioma           | Language         | Idioma             |
-| IDUFSC ou CPF    | IDUFSC or CPF    | IDUFSC o CPF       |
+| IDUFSC ou CPF    | IDUFSC		      | IDUFSC		       |
 | Senha ID UFSC    | ID UFSC password | ID UFSC contraseña |
 | Manter conectado | Keed connected   | Mantener conectado |
 | Entrar           | Log in           | Entrar             |
 | Sobre            | About            | Sobre              |
 
-### Dicionário de dados 
-
 ### Protótipos de tela
+
+![Login.](img/login.PNG "Protótipo 1 - Login.") *Protótipo 1 - Login.*

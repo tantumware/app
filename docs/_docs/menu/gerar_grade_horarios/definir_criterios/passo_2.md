@@ -33,5 +33,6 @@ order: 2
 | Remover 				   					| Remove									| Eliminar										|
 | Próximo passo				   				| Next step			 						| Proximo paso				   					|
 
+# Protótipos de tela
 
-
+![Definir critérios - Passo 2.](../img/definir_criterios_2.PNG "Protótipo 1 - Definir critérios - Passo 2.") *Protótipo 1 - Definir critérios - Passo 2.*

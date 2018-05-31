@@ -27,5 +27,3 @@ This application was developed as a Course Completion Work by students Isaac Sil
 El objetivo de esta aplicación es ayudarle a montar su cuadrícula de horarios para el próximo semestre para minimizar su tiempo de formación y encajar las disciplinas en los turnos de estudio que son más convenientes con su rutina. También se pondrán a disposición las funciones de visualización de rejilla de horarios y estadísticas de seguimiento del curso.
 
 Esta aplicación ha sido desarrollada a través de estudios de aprendizaje por parte de los alumnos de Isaac Silva y Pedro Pacheco del curso de sistemas de información.
-
-### Protótipos de tela

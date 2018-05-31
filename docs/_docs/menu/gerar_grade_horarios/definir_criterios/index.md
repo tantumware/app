@@ -48,5 +48,6 @@ order: 1
 | Considerar matérias equivalentes? | Consider equivalent courses?   | Considerar materias equivalentes? 	|
 | Próximo passo						| Next step			 			 | Proximo paso							|
 
+# Protótipos de tela
 
-
+![Definir critérios - Passo 1.](../img/definir_criterios_1.PNG "Protótipo 1 - Definir critérios - Passo 1.") *Protótipo 1 - Definir critérios - Passo 1.*

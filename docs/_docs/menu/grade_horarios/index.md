@@ -44,7 +44,7 @@ order: 1
 
 **5.** Os dias da semana devem ser apresentados em sua forma abreviada.
 
-**6.** O dia da semana que está sendo exibido deve receber um destaque de acordo com o seguinte protótipo. **Protótipo**
+**6.** O dia da semana que está sendo exibido deve receber um destaque de acordo com o seguinte protótipo. 
 
 **7.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhes da disciplina {% link detalhes_disciplina %}.
 
@@ -63,14 +63,14 @@ order: 1
 
 ###### Diário
 
-| Português        | Inglês           | Espanhol           |
-| ---------------- | ---------------- | ------------------ |
-| SEG              |
-| TERÇ 			   |
-| QUA              |
-| QUI              |
-| SEX              |
-| SAB              |
+| Português | Inglês  | Espanhol |
+| --------- | ------- | -------- |
+| SEG       | MON     | LUN      |
+| TERÇ 		| TUE     | MAR 	 |
+| QUA       | WED     | MIÉ 	 |
+| QUI       | THU     | JUE 	 |
+| SEX       | FRI     | VIE 	 |
+| SAB       | SAT     | SÁB 	 |
 
 ###### Semanal
 
@@ -82,3 +82,9 @@ order: 1
 | Quinta		   | Thursday         | Jueves             |
 | Sexta			   | Friday    		  | Viernes 		   |
 | Sábado		   | Saturday 		  | Sábado             |
+
+# Protótipos de tela
+
+![Horário diário.](img/horarios_dia.PNG "Protótipo 1 - Horário diário.") *Protótipo 1 - Horário diário.*
+
+![Horário semanal.](img/horarios_semanal.PNG "Protótipo 2 - Horário semanal.") *Protótipo 2 - Horário semanal.*

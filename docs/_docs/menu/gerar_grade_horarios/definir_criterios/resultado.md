@@ -16,9 +16,9 @@ order: 3
 
 **4.** Ao selecionar uma disciplina da grade de horários, o detalhe a ser exibido deve seguir o especificado no requisito {% link detalhes_disciplina %}.
 
-**x.** O comportamento da grade de horários está contido no requisito **LINK**.
+**5.** O comportamento da grade de horários está contido no requisito {% link grade__horarios_semanal %}.
 
-**x.** Ao acionar a opção **Redefinir critérios de geração** o usuário deve ser redirecionado para a tela {% link definir_criterios %}.
+**6.** Ao acionar a opção **Redefinir critérios de geração** o usuário deve ser redirecionado para a tela {% link definir_criterios %}.
 
 # Internacionalização
 
@@ -30,3 +30,8 @@ order: 3
 | Opção 3			 			 | Option 3						| Opción 3								|
 | Remover 			 			 | Remove						| Eliminar								|
 | Redefinir critérios de geração | Reset generation criteria	| Redefinir los criterios de generación |
+
+# Protótipos de tela
+
+![Resultados da geração de horários.](../img/resultado.PNG "Protótipo 1 - Resultados da geração de horários.") *Protótipo 1 - Resultados da geração de horários.*
+

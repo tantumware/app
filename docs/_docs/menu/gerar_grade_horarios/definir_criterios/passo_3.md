@@ -34,5 +34,6 @@ Titulo: Definir critérios - Passo 3
 | Remover | Remove | Eliminar |
 | Gerar grade de horários | Generate time grid | Generar cuadrícula de horas |
 
+# Protótipos de tela
 
-
+![Definir critérios - Passo 3.](../img/definir_criterios_3.PNG "Protótipo 1 - Definir critérios - Passo 3.") *Protótipo 1 - Definir critérios - Passo 3.*

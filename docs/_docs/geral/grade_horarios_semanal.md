@@ -6,7 +6,7 @@ parent: geral
 order: 1
 ---
 
-# Campos:
+# Campos
 
 - Dia da semana;
 - Horário de início da disciplina;
@@ -21,7 +21,9 @@ order: 1
 
 **2.** Os nomes das disciplinas não devem ser traduzidos para outros idiomas.
 
-**3.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhe da disciplina LINK.
+**3.** Ao selecionar uma disciplina da listagem, redirecionar o usuário para a tela de detalhe da disciplina {% link detalhes_disciplina %}.
+
+# Internacionalização
 
 | Português	| Inglês	| Espanhol 	|
 | --------- | --------- | --------- |
@@ -31,3 +33,7 @@ order: 1
 | Quinta	| Thursday	| Jueves	|
 | Sexta		| Friday	| Viernes	|
 | Sábado	| Saturday	| Sábado	|
+
+# Protótipos de tela
+
+![Horário semanal.](img/horarios_semanal.PNG "Protótipo 1 - Horário semanal.") *Protótipo 1 - Horário semanal.*

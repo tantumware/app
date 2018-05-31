@@ -49,12 +49,11 @@ order: 2
 
 **4.** Ao selecionar um módulo o usuário deve ser redirecionado para sua respectiva tela, conforme o seguinte mapeamento:
 
-- Grade de horários: LINK;
-- Geração de grade de horários: LINK;
-- Estatísticas: LINK. 
+- **Grade de horários:** {% link grade_horarios %};
+- **Geração de grade de horários:** {% link gerar_grade_horarios %};
+- **Estatísticas:** . 
 
-**5.** Ao acionar a ação **Sair**, o usuário deve ter sua seção encerrada, sendo redirecionado para a tela de login **INSERIR LINK**.
-
+**5.** Ao acionar a ação **Sair**, o usuário deve ter sua seção encerrada, sendo redirecionado para a tela de login {% link login %}.
 
 ### Internacionalização
 
@@ -66,3 +65,6 @@ order: 2
 | Sair                         | Log out                 | Finalizar la sesión          |
 
 ### Protótipos de tela
+
+![Horário semanal.](img/main.PNG "Protótipo 1 - Menu principal.") *Protótipo 1 - Menu principal.*
+

@@ -54,3 +54,7 @@ order: 1
 | Sexta			 		 | Friday	  	  | Viernes						|
 | Sábado		 		 | Saturday	  	  | Sábado						|
 | Voltar 		 		 | Back           | Regreso						|
+
+# Protótipos de tela
+
+![Detalhes da disciplina.](img/disciplina_detail.PNG "Protótipo 1 - Detalhes da disciplina.") *Protótipo 1 - Detalhes da disciplina.*
